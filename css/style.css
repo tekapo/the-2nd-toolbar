@@ -1,32 +1,36 @@
-/* 
-    Document   : style.css
-    Created on : 2013/01/21, 16:04:46
-    Updated on : 2016/10/17, 18:42
+/*
+    Created on : 2019/08/20, 22:42:42
     Author     : tai
-    Description:
-    The stylesheet for the plugin.
 */
-#wpadminbar .show-template-name, #wpadminbar .hover .show-template-name {
-  font-family: monospace;
-  text-shadow: none; }
-#wpadminbar #wp-admin-bar-included_files_path .ab-item {
-  height: auto;
-  padding-bottom: 1rem; }
-  #wpadminbar #wp-admin-bar-included_files_path .ab-item div {
-    font-family: monospace;
-    text-shadow: none;
-    color: #fff; }
-#wpadminbar .hover .show-template-name:hover {
-  color: #2ea2cc; }
-#wpadminbar #wp-admin-bar-included_files_path .ab-item #included-files-list li {
-  line-height: 1.5; }
-  #wpadminbar #wp-admin-bar-included_files_path .ab-item #included-files-list li:hover {
-    color: #2ea2cc; }
-#wpadminbar #included-files-list {
-  margin-left: 20px; }
+.notice-txt {
+  position: fixed;
+  top: 32px;
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 2;
+  z-index: 9999;
+  height: 4rem; }
+  .notice-txt.production-site {
+    background-color: #990000;
+    color: white; }
+  .notice-txt.staging-site {
+    background-color: #999900;
+    color: white; }
+  .notice-txt.dev-site {
+    background-color: #000099;
+    color: white; }
+  .notice-txt.local-site {
+    background-color: #009900;
+    color: white; }
+  .notice-txt.unknown-site {
+    background-color: black;
+    color: white; }
+  .notice-txt #env-bold {
+    font-weight: bold; }
 
-#wp-admin-bar-show_template_file_name_on_top-default {
-  max-height: 90vh;
-  overflow-x: hidden; }
+html,
+html.wp-toolbar {
+  padding-top: 100px; }
 
 /*# sourceMappingURL=style.css.map */

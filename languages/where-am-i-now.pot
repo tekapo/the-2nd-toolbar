@@ -1,10 +1,10 @@
-# Copyright (C) 2019 YOUR NAME HERE
+# Copyright (C) 2019 JOTAKI, Taisuke
 # This file is distributed under the same license as the Where Am I Now package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Where Am I Now 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/where-am-i-now\n"
-"POT-Creation-Date: 2019-08-19 01:43:22+00:00\n"
+"POT-Creation-Date: 2019-08-25 12:57:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,22 +24,80 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
+#: inc/class-output-notice-msg.php:39
+msgid "This site is on %s."
+msgstr ""
+
+#: inc/class-output-notice-msg.php:41
+msgid "%s server"
+msgstr ""
+
+#: inc/class-output-notice-msg.php:64
+msgid "the production"
+msgstr ""
+
+#: inc/class-output-notice-msg.php:65
+msgid "the staging"
+msgstr ""
+
+#: inc/class-output-notice-msg.php:66
+msgid "the development"
+msgstr ""
+
+#: inc/class-output-notice-msg.php:67
+msgid "the local"
+msgstr ""
+
+#: inc/class-output-notice-msg.php:68
+msgid "an unknown"
+msgstr ""
+
+#: inc/class-settings.php:24
+msgid "Where Am I Now setting"
+msgstr ""
+
+#: inc/class-settings.php:75
+msgid "The production server"
+msgstr ""
+
+#: inc/class-settings.php:84
+msgid "The staging server"
+msgstr ""
+
+#: inc/class-settings.php:93
+msgid "The development server"
+msgstr ""
+
+#: inc/class-settings.php:102
+msgid "The local server"
+msgstr ""
+
+#: inc/class-settings.php:126
+msgid "Where Am I Now Setting"
+msgstr ""
+
+#: inc/class-settings.php:131
+msgid "Choose what server your WordPress running on."
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "Where Am I Now"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "PLUGIN SITE HERE"
+msgid "https://wp.tekapo.com/where-am-i-now/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "PLUGIN DESCRIPTION HERE"
+msgid ""
+"A WordPress plugin that shows what environment (a production site, a "
+"staging site or so on) you are browsing now."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "YOUR NAME HERE"
+msgid "JOTAKI, Taisuke"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "YOUR SITE HERE"
+msgid "https://tekapo.com/"
 msgstr ""
