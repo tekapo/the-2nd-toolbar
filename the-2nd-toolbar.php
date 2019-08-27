@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:     Where Am I Now
- * Plugin URI:      https://wp.tekapo.com/where-am-i-now/
- * Description:     A WordPress plugin that shows what environment (a production site, a staging site or so on) you are browsing now.
+ * Plugin Name:     The 2nd toolbar
+ * Plugin URI:      https://wp.tekapo.com/the-2nd-toobar/
+ * Description:     A WordPress plugin that shows the 2nd toolbar just below the default toolbar.
  * Author:          JOTAKI, Taisuke
  * Author URI:      https://tekapo.com/
- * Text Domain:     where-am-i-now
+ * Text Domain:     the-2nd-toolbar
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         Where_Am_I_Now
+ * @package         Tne_2nd_Toolbar
  *
  * @todo
  *
@@ -18,21 +18,21 @@
 require_once( __DIR__ . '/inc/class-settings.php' );
 require_once( __DIR__ . '/inc/class-output-notice-msg.php' );
 
-define( 'WP_WPWAIN_PLUGIN_DIR_URL', plugins_url( '', __FILE__ ) );
-define( 'WP_WPWAIN_PLUGIN_DIR_PATH', __DIR__ );
-define( 'WP_WPWAIN_PLUGIN_FILE_PATH', __FILE__ );
+define( 'WP_T2T_PLUGIN_DIR_URL', plugins_url( '', __FILE__ ) );
+define( 'WP_T2T_PLUGIN_DIR_PATH', __DIR__ );
+define( 'WP_T2T_PLUGIN_FILE_PATH', __FILE__ );
 
 load_plugin_textdomain(
-		'where-am-i-now',
+		'the-2nd-toolbar',
 		false,
 		dirname( plugin_basename( __FILE__ ) ) . '/languages/'
 );
 
 if ( is_admin() ) {
-	new Where_Am_I_Now_Options();
+	new The_2nd_Toolbar_Options();
 }
 
-new Where_Am_I_Now_Output();
+new The_2nd_Toolbar_Output();
 
 
 
@@ -56,9 +56,9 @@ new Where_Am_I_Now_Output();
 
 //new WhereAmINow();
 
-//new Where_Am_I_Now_Settings();
+//new The_2nd_Toolbar_Settings();
 
-//new Where_Am_I_Now();
+//new The_2nd_Toolbar();
 
 
 

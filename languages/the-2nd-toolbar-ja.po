@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Where Am I Now\n"
-"POT-Creation-Date: 2019-08-25 21:57+0900\n"
-"PO-Revision-Date: 2019-08-25 21:58+0900\n"
+"Project-Id-Version: The 2nd toolbar\n"
+"POT-Creation-Date: 2019-08-27 23:17+0900\n"
+"PO-Revision-Date: 2019-08-27 23:18+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: where-am-i-now.php\n"
+"X-Poedit-WPHeader: the-2nd-toolbar.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -22,79 +22,78 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: inc/class-output-notice-msg.php:39
+#: inc/class-output-notice-msg.php:53
 #, php-format
 msgid "This site is on %s."
 msgstr "このサイトは%sで動いています。"
 
-#: inc/class-output-notice-msg.php:41
+#: inc/class-output-notice-msg.php:55
 #, php-format
 msgid "%s server"
 msgstr "%sサーバー"
 
-#: inc/class-output-notice-msg.php:64
+#: inc/class-output-notice-msg.php:75
 msgid "the production"
 msgstr "本番"
 
-#: inc/class-output-notice-msg.php:65
+#: inc/class-output-notice-msg.php:76
 msgid "the staging"
 msgstr "ステージング"
 
-#: inc/class-output-notice-msg.php:66
+#: inc/class-output-notice-msg.php:77
 msgid "the development"
 msgstr "開発"
 
-#: inc/class-output-notice-msg.php:67
+#: inc/class-output-notice-msg.php:78
 msgid "the local"
 msgstr "ローカル"
 
-#: inc/class-output-notice-msg.php:68
+#: inc/class-output-notice-msg.php:79
 msgid "an unknown"
 msgstr "不明な"
 
-#: inc/class-settings.php:24
-msgid "Where Am I Now setting"
-msgstr "Where Am I Now 設定"
+#: inc/class-settings.php:26
+msgid "The 2nd Toolbar setting"
+msgstr "2番目のツールバー設定"
 
-#: inc/class-settings.php:75
+#: inc/class-settings.php:77
 msgid "The production server"
 msgstr "本番サーバー"
 
-#: inc/class-settings.php:84
+#: inc/class-settings.php:86
 msgid "The staging server"
 msgstr "ステージングサーバー"
 
-#: inc/class-settings.php:93
+#: inc/class-settings.php:95
 msgid "The development server"
 msgstr "開発サーバー"
 
-#: inc/class-settings.php:102
+#: inc/class-settings.php:104
 msgid "The local server"
 msgstr "ローカルサーバー"
 
-#: inc/class-settings.php:126
+#: inc/class-settings.php:129
 msgid "Where Am I Now Setting"
 msgstr "Where Am I Now 設定"
 
-#: inc/class-settings.php:131
+#: inc/class-settings.php:134
 msgid "Choose what server your WordPress running on."
 msgstr "WordPress が実行されているサーバーを選択してください。"
 
 #. Plugin Name of the plugin/theme
-msgid "Where Am I Now"
-msgstr "Where Am I Now"
+msgid "The 2nd toolbar"
+msgstr "2 番目のツールバー"
 
 #. Plugin URI of the plugin/theme
-msgid "https://wp.tekapo.com/where-am-i-now/"
-msgstr "https://wp.tekapo.com/where-am-i-now/"
+msgid "https://wp.tekapo.com/the-2nd-toobar/"
+msgstr "https://wp.tekapo.com/the-2nd-toobar/"
 
 #. Description of the plugin/theme
 msgid ""
-"A WordPress plugin that shows what environment (a production site, a staging "
-"site or so on) you are browsing now."
+"A WordPress plugin that shows the 2nd toolbar just below the default toolbar."
 msgstr ""
-"ブラウジングしている環境(本番サイト、ステージングサイトなど)を表示する "
-"WordPress のプラグインです。"
+"デフォルトのツールバーのすぐ下に2番目のツールバーを表示する WordPress のプラ"
+"グインです。"
 
 #. Author of the plugin/theme
 msgid "JOTAKI, Taisuke"
@@ -104,5 +103,9 @@ msgstr "上滝太祐"
 msgid "https://tekapo.com/"
 msgstr "https://tekapo.com/"
 
-#~ msgid "<span id=\"env-bold\">%s server</span>"
-#~ msgstr "<span id=\\”env-bold\\”>%s サーバー</span>"
+#~ msgid ""
+#~ "A WordPress plugin that shows what environment (a production site, a "
+#~ "staging site or so on) you are browsing now."
+#~ msgstr ""
+#~ "ブラウジングしている環境(本番サイト、ステージングサイトなど)を表示する "
+#~ "WordPress のプラグインです。"

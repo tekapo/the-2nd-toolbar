@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Where_Am_I_Now
+ * @package The_2nd_Toolbar
  */
 
 /**

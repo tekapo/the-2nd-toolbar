@@ -4,12 +4,12 @@
  *
  * @todp
  *
- * Refactaring where_am_i_setting_callback_fnc() method.
+ * Refactaring the_2nd_toolbar_setting_callback_fnc() method.
  */
 
-class Where_Am_I_Now_Options {
+class The_2nd_Toolbar_Options {
 
-	private $where_am_i_now_options;
+	private $the_2nd_toolbar_options;
 
 	function __construct() {
 		add_action( 'admin_init', [ $this, 'add_settings_to_general_options' ] );
@@ -18,26 +18,26 @@ class Where_Am_I_Now_Options {
 	public function add_settings_to_general_options() {
 		register_setting(
 				'general',
-				'where_am_i_now_option_name',
-				array( $this, 'where_am_i_now_sanitize' ),
+				'the_2nd_toolbar_option_name',
+				array( $this, 'the_2nd_toolbar_sanitize' ),
 		);
 		add_settings_field(
-				'where_am_i_setting_id',
-				__( 'Where Am I Now setting', 'where-am-i-now' ),
-				array( $this, 'where_am_i_setting_callback_fnc' ),
+				'the_2nd_toolbar_setting_id',
+				__( 'The 2nd Toolbar setting', 'the-2nd-toolbar' ),
+				array( $this, 'the_2nd_toolbar_setting_callback_fnc' ),
 				'general',
 				'default',
-				array( 'label_for' => 'where_am_i_setting_id' ),
+				array( 'label_for' => 'the_2nd_toolbar_setting_id' ),
 		);
 	}
 
-	public function where_am_i_setting_callback_fnc( $args ) {
+	public function the_2nd_toolbar_setting_callback_fnc( $args ) {
 
-		$this->where_am_i_now_options = get_option( 'where_am_i_now_option_name' );
+		$this->the_2nd_toolbar_options = get_option( 'the_2nd_toolbar_option_name' );
 
-		$is_set_wain_option = isset( $this->where_am_i_now_options[ 'where_am_i_now' ] );
+		$is_set_t2t_option = isset( $this->the_2nd_toolbar_options[ 'the_2nd_toolbar' ] );
 
-		if ( true === $is_set_wain_option ) {
+		if ( true === $is_set_t2t_option ) {
 
 			$production = '';
 			$staging = '';
@@ -45,7 +45,7 @@ class Where_Am_I_Now_Options {
 			$local = '';
 			$unknown = '';
 
-			$str = $this->where_am_i_now_options[ 'where_am_i_now' ];
+			$str = $this->the_2nd_toolbar_options[ 'the_2nd_toolbar' ];
 
 			if ( 'production-site' === $str ) {
 				$production = 'checked';
@@ -66,42 +66,42 @@ class Where_Am_I_Now_Options {
 			</label>
 			';
 
-		$input_name = 'where_am_i_now_option_name[where_am_i_now]';
+		$input_name = 'the_2nd_toolbar_option_name[the_2nd_toolbar]';
 
 		$prod_form = sprintf(
 				$radio_button_form,
-				'where_am_i_now-0',
+				'the_2nd_toolbar-0',
 				$input_name,
 				'production-site',
 				$production,
-				__( 'The production server', 'where-am-i-now' ),
+				__( 'The production server', 'the-2nd-toolbar' ),
 		);
 
 		$staging_form = sprintf(
 				$radio_button_form,
-				'where_am_i_now-1',
+				'the_2nd_toolbar-1',
 				$input_name,
 				'staging-site',
 				$staging,
-				__( 'The staging server', 'where-am-i-now' ),
+				__( 'The staging server', 'the-2nd-toolbar' ),
 		);
 
 		$dev_form = sprintf(
 				$radio_button_form,
-				'where_am_i_now-2',
+				'the_2nd_toolbar-2',
 				$input_name,
 				'dev-site',
 				$dev,
-				__( 'The development server', 'where-am-i-now' ),
+				__( 'The development server', 'the-2nd-toolbar' ),
 		);
 
 		$local_form = sprintf(
 				$radio_button_form,
-				'where_am_i_now-3',
+				'the_2nd_toolbar-3',
 				$input_name,
 				'local-site',
 				$local,
-				__( 'The local server', 'where-am-i-now' ),
+				__( 'The local server', 'the-2nd-toolbar' ),
 		);
 
 		$fieldset_html_form = '
@@ -126,21 +126,21 @@ class Where_Am_I_Now_Options {
 
 		$fieldset_html = sprintf(
 				$fieldset_html_form,
-				__( 'Where Am I Now Setting', 'where-am-i-now' ),
+				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
 				$prod_form,
 				$staging_form,
 				$dev_form,
 				$local_form,
-				__( 'Choose what server your WordPress running on.', 'where-am-i-now' ),
+				__( 'Choose what server your WordPress running on.', 'the-2nd-toolbar' ),
 		);
 
 		echo $fieldset_html;
 	}
 
-	public function where_am_i_now_sanitize( $input ) {
+	public function the_2nd_toolbar_sanitize( $input ) {
 		$sanitary_values = array();
-		if ( isset( $input[ 'where_am_i_now' ] ) ) {
-			$sanitary_values[ 'where_am_i_now' ] = $input[ 'where_am_i_now' ];
+		if ( isset( $input[ 'the_2nd_toolbar' ] ) ) {
+			$sanitary_values[ 'the_2nd_toolbar' ] = $input[ 'the_2nd_toolbar' ];
 		}
 
 		return $sanitary_values;
