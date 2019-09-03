@@ -13,10 +13,15 @@
  *
  * @todo
  *
+ * Create the settings page, class-settings-page.php
+ * Create the default settings like where am I now.
+ * Change the file name, class-output-notice-msg.php to class-output-the-2nd-toolbar.php
+ *
  *
  */
-require_once( __DIR__ . '/inc/class-settings.php' );
-require_once( __DIR__ . '/inc/class-output-notice-msg.php' );
+//require_once( __DIR__ . '/includes/class-settings.php' );
+require_once( __DIR__ . '/includes/class-options-page.php' );
+require_once( __DIR__ . '/includes/class-output-notice-msg.php' );
 
 define( 'WP_T2T_PLUGIN_DIR_URL', plugins_url( '', __FILE__ ) );
 define( 'WP_T2T_PLUGIN_DIR_PATH', __DIR__ );
@@ -29,40 +34,8 @@ load_plugin_textdomain(
 );
 
 if ( is_admin() ) {
-	new The_2nd_Toolbar_Options();
+//	new The_2nd_Toolbar_Options();
+	new Class_Options_Page();
 }
 
 new The_2nd_Toolbar_Output();
-
-
-
-/**
- * The constant WHAT_ENV_SITE should be one of them:
- * 'production_site'
- * 'staging_site'
- * 'dev_site'
- * 'local_site'
- * 'unknown_site'
- *  */
-//if ( true === defined( 'WP_LOCAL_DEV' ) ) {
-//	if ( true === WP_LOCAL_DEV ) {
-//		define( 'WHAT_ENV_SITE', 'local_site' );
-//	} elseif ( false === WP_LOCAL_DEV ) {
-//		define( 'WHAT_ENV_SITE', 'production_site' );
-//	}
-//} elseif ( false === defined( 'WP_LOCAL_DEV' ) ) {
-//	define( 'WHAT_ENV_SITE', 'unknown_site' );
-//}
-
-//new WhereAmINow();
-
-//new The_2nd_Toolbar_Settings();
-
-//new The_2nd_Toolbar();
-
-
-
-
-
-
-//new Shifter_GH_Installer($work_dir);

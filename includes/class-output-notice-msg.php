@@ -41,13 +41,16 @@ class The_2nd_Toolbar_Output {
 	}
 
 	public function echo_the_2nd_toolbar_html() {
-		echo $this->get_the_2nd_toolbar_html();
+		echo $this->get_the_2nd_toolbar_wrap_html();
 	}
 
-	public function get_the_2nd_toolbar_html() {
+	public function get_the_2nd_toolbar_wrap_html() {
 
-		$options = get_option( 'the_2nd_toolbar_option_name' );
-		$what_server = $options[ 'the_2nd_toolbar' ];
+//		$t2t_options = get_option('t2t_option_name');
+//		var_dump($t2t_options);
+
+		$t2t_options = get_option( 't2t_option_name' );
+		$what_server = $t2t_options[ 'the_2nd_toolbar' ];
 		$server_class = $what_server;
 
 		$notice_txt_format = __( 'This site is on %s.', 'the-2nd-toolbar' );
@@ -70,6 +73,10 @@ class The_2nd_Toolbar_Output {
 		return $output_html;
 	}
 
+	public function get_where_am_i_now_html( $what_server ) {
+
+	}
+
 	public function get_notice_str( $what_server ) {
 
 		$notice_str_prod = __( 'the production', 'the-2nd-toolbar' );
@@ -82,7 +89,7 @@ class The_2nd_Toolbar_Output {
 			$notice_str = $notice_str_prod;
 		} elseif ( 'staging-site' === $what_server ) {
 			$notice_str = $notice_str_staging;
-		} elseif ( 'dev-site' === $what_server ) {
+		} elseif ( 'development-site' === $what_server ) {
 			$notice_str = $notice_str_dev;
 		} elseif ( 'local-site' === $what_server ) {
 			$notice_str = $notice_str_local;
