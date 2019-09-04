@@ -127,9 +127,9 @@ class Class_Options_Page {
 		);
 
 		$this->add_settings_field_template(
-				'the_2nd_toolbar_setting_id',
-				__( 'The 2nd Toolbar setting', 'the-2nd-toolbar' ),
-				'the_2nd_toolbar_setting_callback_fnc',
+				'where_am_i_now_setting_id',
+				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
+				'where_am_i_now_setting_callback',
 				self::SETTING_SECTION_ID_WAIN, // Section
 		);
 	}
@@ -266,7 +266,7 @@ class Class_Options_Page {
 		return $form_output;
 	}
 
-	public function the_2nd_toolbar_setting_callback_fnc() {
+	public function where_am_i_now_setting_callback() {
 
 		$what_site = $this->get_what_site_checked();
 
