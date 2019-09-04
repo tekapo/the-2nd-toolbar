@@ -291,6 +291,8 @@ class Class_Options_Page {
 
 	public function where_am_i_now_setting_callback() {
 
+		$fieldset_html_form =$this->get_fieldset_html_form();
+
 		$what_site = $this->get_what_site_checked();
 
 		$prod_form = $this->get_button_form( 'production', $what_site );
@@ -299,7 +301,7 @@ class Class_Options_Page {
 		$local_form = $this->get_button_form( 'local', $what_site );
 
 		$fieldset_html = sprintf(
-				$this->get_fieldset_html_form(),
+				$fieldset_html_form,
 				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
 				$prod_form,
 				$stg_form,
@@ -319,9 +321,6 @@ class Class_Options_Page {
 		}
 		if ( isset( $input[ 'title' ] ) ) {
 			$sanitized_values[ 'title' ] = sanitize_text_field( $input[ 'title' ] );
-		}
-		if ( isset( $input[ 'id_radio' ] ) ) {
-			$sanitized_values[ 'id_radio' ] = $input[ 'id_radio' ];
 		}
 		if ( isset( $input[ self::OPTION_NAME_WAIN ] ) ) {
 			$sanitized_values[ self::OPTION_NAME_WAIN ] = $input[ self::OPTION_NAME_WAIN ];

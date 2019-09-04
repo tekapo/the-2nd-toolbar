@@ -23,7 +23,7 @@
 /**
  * Echo and output html and css.
  */
-class The_2nd_Toolbar_Output {
+class Output_The_2nd_Toolbar {
 
 	public const OPTION_NAME = 't2t_option_name';
 	public const OPTION_NAME_WAIN = 'where_am_i_now';

@@ -38,4 +38,4 @@ if ( is_admin() ) {
 	new Class_Options_Page();
 }
 
-new The_2nd_Toolbar_Output();
+new Output_The_2nd_Toolbar();
