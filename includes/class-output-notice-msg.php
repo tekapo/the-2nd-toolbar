@@ -47,10 +47,10 @@ class The_2nd_Toolbar_Output {
 	public function get_the_2nd_toolbar_wrap_html() {
 
 //		$t2t_options = get_option('t2t_option_name');
-//		var_dump($t2t_options);
 
 		$t2t_options = get_option( 't2t_option_name' );
-		$what_server = $t2t_options[ 'the_2nd_toolbar' ];
+
+		$what_server = $t2t_options[ 'where_am_i_now' ];
 		$server_class = $what_server;
 
 		$notice_txt_format = __( 'This site is on %s.', 'the-2nd-toolbar' );

@@ -4,6 +4,7 @@
  *
  * How to sanitize radio value?
  */
+
 class Class_Options_Page {
 
 	/**
@@ -14,7 +15,8 @@ class Class_Options_Page {
 	const OPTION_NAME = 't2t_option_name';
 	const OPTION_GROUP = 't2t_option_group';
 	const PAGE_SLUG = 'the-2nd-toolbar-options';
-	const SETTING_SECTION_ID = 't2t_setting_section_id';
+	const SETTING_SECTION_ID = 't2t_setting_sectiong_id';
+	const OPTION_NAME_WAIN = 'where_am_i_now';
 	const SETTING_SECTION_ID_WAIN = 't2t_setting_section_id_wain';
 
 	/**
@@ -203,8 +205,8 @@ class Class_Options_Page {
 	public function get_what_site_checked() {
 		$this->options = get_option( self::OPTION_NAME );
 
-		if ( true === isset( $this->options[ 'the_2nd_toolbar' ] ) ) {
-			$str = $this->options[ 'the_2nd_toolbar' ];
+		if ( true === isset( $this->options[ self::OPTION_NAME_WAIN ] ) ) {
+			$str = $this->options[ self::OPTION_NAME_WAIN ];
 			$what_site_checked = $this->decide_what_site_checked( $str );
 		}
 
@@ -250,7 +252,7 @@ class Class_Options_Page {
 			$is_checked = 'checked';
 		}
 
-		$input_name = self::OPTION_NAME . '[the_2nd_toolbar]';
+		$input_name = self::OPTION_NAME . '[' . self::OPTION_NAME_WAIN . ']';
 
 		$id_num = $this->get_id_num( $site_env_type );
 
@@ -311,17 +313,17 @@ class Class_Options_Page {
 	public function the_2nd_toolbar_sanitize( $input ) {
 		$sanitized_values = array();
 
-		if ( isset( $input[ 'id_number' ] ) ){
+		if ( isset( $input[ 'id_number' ] ) ) {
 			$sanitized_values[ 'id_number' ] = absint( $input[ 'id_number' ] );
 		}
-		if ( isset( $input[ 'title' ] ) ){
+		if ( isset( $input[ 'title' ] ) ) {
 			$sanitized_values[ 'title' ] = sanitize_text_field( $input[ 'title' ] );
 		}
-		if ( isset( $input[ 'id_radio' ] ) ){
+		if ( isset( $input[ 'id_radio' ] ) ) {
 			$sanitized_values[ 'id_radio' ] = $input[ 'id_radio' ];
 		}
-		if ( isset( $input[ 'the_2nd_toolbar' ] ) ) {
-			$sanitized_values[ 'the_2nd_toolbar' ] = $input[ 'the_2nd_toolbar' ];
+		if ( isset( $input[ self::OPTION_NAME_WAIN ] ) ) {
+			$sanitized_values[ self::OPTION_NAME_WAIN ] = $input[ self::OPTION_NAME_WAIN ];
 		}
 
 		return $sanitized_values;
