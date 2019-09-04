@@ -175,9 +175,6 @@ class Class_Options_Page {
 		);
 	}
 
-//	*******************
-//	private $the_2nd_toolbar_options;
-
 	public function decide_what_site_checked( $str ) {
 		$what_site = array(
 			'production' => '',
@@ -268,15 +265,7 @@ class Class_Options_Page {
 		return $form_output;
 	}
 
-	public function where_am_i_now_setting_callback() {
-
-		$what_site = $this->get_what_site_checked();
-
-		$prod_form = $this->get_button_form( 'production', $what_site );
-		$stg_form = $this->get_button_form( 'staging', $what_site );
-		$dev_form = $this->get_button_form( 'development', $what_site );
-		$local_form = $this->get_button_form( 'local', $what_site );
-
+	public function get_fieldset_html_form() {
 		$fieldset_html_form = '
 				<fieldset>
 					<legend class="screen-reader-text">
@@ -297,8 +286,20 @@ class Class_Options_Page {
 				</p>
 				';
 
+		return $fieldset_html_form;
+	}
+
+	public function where_am_i_now_setting_callback() {
+
+		$what_site = $this->get_what_site_checked();
+
+		$prod_form = $this->get_button_form( 'production', $what_site );
+		$stg_form = $this->get_button_form( 'staging', $what_site );
+		$dev_form = $this->get_button_form( 'development', $what_site );
+		$local_form = $this->get_button_form( 'local', $what_site );
+
 		$fieldset_html = sprintf(
-				$fieldset_html_form,
+				$this->get_fieldset_html_form(),
 				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
 				$prod_form,
 				$stg_form,
