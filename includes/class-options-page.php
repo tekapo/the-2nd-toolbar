@@ -12,12 +12,12 @@ class Class_Options_Page {
 	 */
 	private $options;
 
-	const OPTION_NAME = 't2t_option_name';
-	const OPTION_GROUP = 't2t_option_group';
-	const PAGE_SLUG = 'the-2nd-toolbar-options';
-	const SETTING_SECTION_ID = 't2t_setting_sectiong_id';
-	const OPTION_NAME_WAIN = 'where_am_i_now';
-	const SETTING_SECTION_ID_WAIN = 't2t_setting_section_id_wain';
+	public const OPTION_NAME = 't2t_option_name';
+	public const OPTION_GROUP = 't2t_option_group';
+	public const PAGE_SLUG = 'the-2nd-toolbar-options';
+	public const SETTING_SECTION_ID = 't2t_setting_sectiong_id';
+	public const OPTION_NAME_WAIN = 'where_am_i_now';
+	public const SETTING_SECTION_ID_WAIN = 't2t_setting_section_id_wain';
 
 	/**
 	 * Start up

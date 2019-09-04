@@ -25,6 +25,9 @@
  */
 class The_2nd_Toolbar_Output {
 
+	public const OPTION_NAME = 't2t_option_name';
+	public const OPTION_NAME_WAIN = 'where_am_i_now';
+
 	function __construct() {
 		add_action( 'init', [ $this, 'load_pulgin_init_function' ] );
 	}
@@ -46,11 +49,9 @@ class The_2nd_Toolbar_Output {
 
 	public function get_the_2nd_toolbar_wrap_html() {
 
-//		$t2t_options = get_option('t2t_option_name');
+		$t2t_options = get_option( self::OPTION_NAME );
 
-		$t2t_options = get_option( 't2t_option_name' );
-
-		$what_server = $t2t_options[ 'where_am_i_now' ];
+		$what_server = $t2t_options[ self::OPTION_NAME_WAIN ];
 		$server_class = $what_server;
 
 		$notice_txt_format = __( 'This site is on %s.', 'the-2nd-toolbar' );

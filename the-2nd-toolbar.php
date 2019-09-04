@@ -13,15 +13,16 @@
  *
  * @todo
  *
- * Create the settings page, class-settings-page.php
  * Create the default settings like where am I now.
+ *
+ * Done
+ *
+ * Create the settings page, class-settings-page.php
  * Change the file name, class-output-notice-msg.php to class-output-the-2nd-toolbar.php
  *
- *
  */
-//require_once( __DIR__ . '/includes/class-settings.php' );
 require_once( __DIR__ . '/includes/class-options-page.php' );
-require_once( __DIR__ . '/includes/class-output-notice-msg.php' );
+require_once( __DIR__ . '/includes/class-output-the-2nd-toolbar.php' );
 
 define( 'WP_T2T_PLUGIN_DIR_URL', plugins_url( '', __FILE__ ) );
 define( 'WP_T2T_PLUGIN_DIR_PATH', __DIR__ );
@@ -34,7 +35,6 @@ load_plugin_textdomain(
 );
 
 if ( is_admin() ) {
-//	new The_2nd_Toolbar_Options();
 	new Class_Options_Page();
 }
 
