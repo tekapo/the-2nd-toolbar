@@ -44,15 +44,38 @@ class Output_The_2nd_Toolbar {
 	}
 
 	public function echo_the_2nd_toolbar_html() {
-		echo $this->get_the_2nd_toolbar_wrap_html();
+		echo $this->get_the_2nd_toolbar_outer_html();
 	}
 
-	public function get_the_2nd_toolbar_wrap_html() {
+	public function get_the_2nd_toolbar_outer_html() {
+
+		do_action('the_2nd_toolbar_inside_html');
+
+		$notice_html = $this->get_where_am_i_now_html();
+
+		$format = '<div class="notice-txt %1$s">%2$s</div>';
+		$output_html = sprintf(
+				$format,
+				$notice_html[0],
+				$notice_html[1],
+		);
+
+		return $output_html;
+	}
+
+	/**
+	 *
+	 *
+	 * @param none
+	 *
+	 * @return array
+	 */
+	public function get_where_am_i_now_html() {
 
 		$t2t_options = get_option( self::OPTION_NAME );
-
 		$what_server = $t2t_options[ self::OPTION_NAME_WAIN ];
-		$server_class = $what_server;
+
+		$server_span_class = $what_server;
 
 		$notice_txt_format = __( 'This site is on %s.', 'the-2nd-toolbar' );
 		$notice_span_format = '<span id="env-bold">%s</span>';
@@ -64,18 +87,7 @@ class Output_The_2nd_Toolbar {
 		$notice_span_str = sprintf( $notice_span_format, $notice_server_txt );
 		$notice_txt = sprintf( $notice_txt_format, $notice_span_str );
 
-		$format = '<div class="notice-txt %1$s">%2$s</div>';
-		$output_html = sprintf(
-				$format,
-				$server_class,
-				$notice_txt,
-		);
-
-		return $output_html;
-	}
-
-	public function get_where_am_i_now_html( $what_server ) {
-
+		return [$server_span_class, $notice_txt];
 	}
 
 	public function get_notice_str( $what_server ) {

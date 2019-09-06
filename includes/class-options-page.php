@@ -32,7 +32,7 @@ class Class_Options_Page {
 	 */
 	public function add_plugin_page() {
 		// This page will be under "Settings"
-		$setting_page_and_menu_title = __( 'The 2nd Toolbar Settings', 'the-2nd-toolbar' );
+		$setting_page_and_menu_title = __( 'The 2nd Toolbar', 'the-2nd-toolbar' );
 		add_options_page(
 				$setting_page_and_menu_title,
 				$setting_page_and_menu_title,
