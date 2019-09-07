@@ -35,32 +35,28 @@ class Output_The_2nd_Toolbar {
 	public function load_pulgin_init_function() {
 		if ( true === is_user_logged_in() ) {
 			//	echo html
-			add_action( 'wp_footer', [ $this, 'echo_the_2nd_toolbar_html' ], 999, 1 );
-			add_action( 'admin_footer', [ $this, 'echo_the_2nd_toolbar_html' ], 999, 1 );
+			add_action( 'wp_footer', [ $this, 'echo_the_2nd_toolbar_outer_html' ], 999, 1 );
+			add_action( 'admin_footer', [ $this, 'echo_the_2nd_toolbar_outer_html' ], 999, 1 );
+			add_action('the_2nd_toolbar_innner_html', [$this, 'echo_where_am_i_now_html']);
 			//	output css
 			add_action( 'wp_enqueue_scripts', [ $this, 'add_the_2nd_toolbar_css' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'add_the_2nd_toolbar_css' ] );
 		}
 	}
 
-	public function echo_the_2nd_toolbar_html() {
-		echo $this->get_the_2nd_toolbar_outer_html();
-	}
-
-	public function get_the_2nd_toolbar_outer_html() {
-
-		do_action('the_2nd_toolbar_inside_html');
+	public function echo_the_2nd_toolbar_outer_html() {
 
 		$notice_html = $this->get_where_am_i_now_html();
 
-		$format = '<div class="notice-txt %1$s">%2$s</div>';
-		$output_html = sprintf(
-				$format,
-				$notice_html[0],
-				$notice_html[1],
-		);
+		echo '<div class="t2t-outer ' . $notice_html[0] . '">';
 
-		return $output_html;
+		do_action('the_2nd_toolbar_innner_html');
+
+		echo '</div>';
+	}
+
+	public function echo_where_am_i_now_html() {
+		echo $this->get_where_am_i_now_html()[1];
 	}
 
 	/**
@@ -92,22 +88,16 @@ class Output_The_2nd_Toolbar {
 
 	public function get_notice_str( $what_server ) {
 
-		$notice_str_prod = __( 'the production', 'the-2nd-toolbar' );
-		$notice_str_staging = __( 'the staging', 'the-2nd-toolbar' );
-		$notice_str_dev = __( 'the development', 'the-2nd-toolbar' );
-		$notice_str_local = __( 'the local', 'the-2nd-toolbar' );
-		$notice_str_unknown = __( 'an unknown', 'the-2nd-toolbar' );
-
 		if ( 'production-site' === $what_server ) {
-			$notice_str = $notice_str_prod;
+			$notice_str = __( 'the production', 'the-2nd-toolbar' );
 		} elseif ( 'staging-site' === $what_server ) {
-			$notice_str = $notice_str_staging;
+			$notice_str = __( 'the staging', 'the-2nd-toolbar' );
 		} elseif ( 'development-site' === $what_server ) {
-			$notice_str = $notice_str_dev;
+			$notice_str = __( 'the development', 'the-2nd-toolbar' );
 		} elseif ( 'local-site' === $what_server ) {
-			$notice_str = $notice_str_local;
+			$notice_str = __( 'the local', 'the-2nd-toolbar' );
 		} else {
-			$notice_str = $notice_str_unknown;
+			$notice_str = __( 'an unknown', 'the-2nd-toolbar' );
 		}
 
 		return $notice_str;

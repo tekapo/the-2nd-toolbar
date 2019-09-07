@@ -2,7 +2,7 @@
     Created on : 2019/08/20, 22:42:42
     Author     : tai
 */
-.notice-txt {
+.t2t-outer {
   position: fixed;
   top: 32px;
   text-align: center;
@@ -11,22 +11,22 @@
   line-height: 2;
   z-index: 9999;
   height: 4rem; }
-  .notice-txt.production-site {
+  .t2t-outer.production-site {
     background-color: #990000;
     color: white; }
-  .notice-txt.staging-site {
+  .t2t-outer.staging-site {
     background-color: #999900;
     color: white; }
-  .notice-txt.development-site {
+  .t2t-outer.development-site {
     background-color: #000099;
     color: white; }
-  .notice-txt.local-site {
+  .t2t-outer.local-site {
     background-color: #009900;
     color: white; }
-  .notice-txt.unknown-site {
+  .t2t-outer.unknown-site {
     background-color: black;
     color: white; }
-  .notice-txt #env-bold {
+  .t2t-outer #env-bold {
     font-weight: bold; }
 
 html,
