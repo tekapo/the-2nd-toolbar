@@ -15,7 +15,9 @@ class Class_Options_Page {
 	public const OPTION_NAME = 't2t_option_name';
 	public const OPTION_GROUP = 't2t_option_group';
 	public const PAGE_SLUG = 'the-2nd-toolbar-options';
-	public const SETTING_SECTION_ID = 't2t_setting_sectiong_id';
+	public const SETTING_SECTION_ID = 't2t_setting_section_id';
+	public const OPTION_NAME_GENERAL = 't2t_setting_name_general';
+	public const SETTING_SECTION_ID_GENERAL = 't2t_setting_section_id_general';
 	public const OPTION_NAME_WAIN = 'where_am_i_now';
 	public const SETTING_SECTION_ID_WAIN = 't2t_setting_section_id_wain';
 
@@ -88,6 +90,12 @@ class Class_Options_Page {
 				self::PAGE_SLUG // Page
 		);
 		add_settings_section(
+				self::SETTING_SECTION_ID_GENERAL,
+				'General Settings', // Title
+				array( $this, 'print_section_info' ), // Callback
+				self::PAGE_SLUG // Page
+		);
+		add_settings_section(
 				self::SETTING_SECTION_ID_WAIN,
 				'Where AM I Now Settings', // Title
 				array( $this, 'print_section_info_wain' ), // Callback
@@ -126,6 +134,21 @@ class Class_Options_Page {
 				'Title',
 				'title_callback',
 				self::SETTING_SECTION_ID
+		);
+
+
+		$this->add_settings_field_template(
+				'height',
+				'Height',
+				'height_options_callback',
+				self::SETTING_SECTION_ID_GENERAL
+		);
+
+		$this->add_settings_field_template(
+				'position',
+				'Position',
+				'position_options_callback',
+				self::SETTING_SECTION_ID_GENERAL
 		);
 
 		$this->add_settings_field_template(
@@ -173,6 +196,99 @@ class Class_Options_Page {
 				self::OPTION_NAME,
 				isset( $this->options[ 'title' ] ) ? esc_attr( $this->options[ 'title' ] ) : ''
 		);
+	}
+
+	public function height_options_callback() {
+
+		$fieldset_html_form = '
+				<fieldset>
+					<legend class="screen-reader-text">
+						<span>
+						%1$s
+						</span>
+					</legend>
+					%2$s
+					<br>
+					%3$s
+					<br>
+					%4$s
+				</fieldset>
+				<p class="t2t-description">
+					%5$s
+				</p>
+				';
+
+		$what_height = $this->get_what_height_checked();
+
+		$height_32_form = $this->get_height_radio_button_form( 'height32px', 'height32px', $what_height['32'], '32px (same as the default toolbar)' );
+		$height_48_form = $this->get_height_radio_button_form( 'height48px', 'height48px', $what_height['48'], '48px (1.5 times as high as the default toolbar)' );
+		$height_64_form = $this->get_height_radio_button_form( 'height64px', 'height64px', $what_height['64'], '64px (2 times as high as the default toolbar)' );
+
+		$fieldset_html = sprintf(
+				$fieldset_html_form,
+				__( 'Height of the toolbar.', 'the-2nd-toolbar' ),
+				$height_32_form,
+				$height_48_form,
+				$height_64_form,
+				__( 'Choose how high the toolbar is.', 'the-2nd-toolbar' ),
+		);
+
+		echo $fieldset_html;
+	}
+
+	public function get_what_height_checked() {
+
+		$this->options = get_option( self::OPTION_NAME );
+
+		$str = '';
+
+		if ( true === isset( $this->options[ self::OPTION_NAME_GENERAL ] ) ) {
+			$str = $this->options[ self::OPTION_NAME_GENERAL ];
+		}
+
+		$height = array(
+			'32' => '',
+			'48' => '',
+			'64' => '',
+			'unknown' => '',
+		);
+
+		if ( 'height32px' === $str ) {
+			$height[ '32' ] = 'checked';
+		} elseif ( 'height48px' === $str ) {
+			$height[ '48' ] = 'checked';
+		} elseif ( 'height64px' === $str ) {
+			$height[ '64' ] = 'checked';
+		} else {
+			$height[ 'unknown' ] = $str;
+		}
+
+		return $height;
+	}
+
+	public function get_height_radio_button_form(
+			$radio_button_label_and_name,
+			$radio_button_value,
+			$is_checked,
+			$radio_button_txt ) {
+
+		$radio_button_form = $this->get_radio_button_form();
+
+		$input_name = self::OPTION_NAME . '[' . self::OPTION_NAME_GENERAL . ']';
+
+		$form_output = sprintf(
+				$radio_button_form,
+				$radio_button_label_and_name,
+				$input_name,
+				$radio_button_value,
+				$is_checked,
+				$radio_button_txt,
+		);
+		return $form_output;
+	}
+
+	public function position_options_callback() {
+
 	}
 
 	public function decide_what_site_checked( $str ) {
@@ -236,7 +352,7 @@ class Class_Options_Page {
 		return $radio_button_form;
 	}
 
-	public function get_button_form( $site_env_type, $what_site ) {
+	public function get_what_site_button_form( $site_env_type, $what_site ) {
 
 //		var_dump($site_env_type);
 //		var_dump($what_site);
@@ -266,6 +382,15 @@ class Class_Options_Page {
 	}
 
 	public function get_fieldset_html_form() {
+
+		/**
+		 * %1$s screen reader text
+		 * %2$s button 1
+		 * %3$s button 2
+		 * %4$s button 3
+		 * %5$s button 4
+		 * %6$s description text
+		 */
 		$fieldset_html_form = '
 				<fieldset>
 					<legend class="screen-reader-text">
@@ -281,7 +406,7 @@ class Class_Options_Page {
 					<br>
 					%5$s
 				</fieldset>
-				<p class="where-am-i-description">
+				<p class="t2t-description">
 					%6$s
 				</p>
 				';
@@ -291,14 +416,14 @@ class Class_Options_Page {
 
 	public function where_am_i_now_setting_callback() {
 
-		$fieldset_html_form =$this->get_fieldset_html_form();
+		$fieldset_html_form = $this->get_fieldset_html_form();
 
 		$what_site = $this->get_what_site_checked();
 
-		$prod_form = $this->get_button_form( 'production', $what_site );
-		$stg_form = $this->get_button_form( 'staging', $what_site );
-		$dev_form = $this->get_button_form( 'development', $what_site );
-		$local_form = $this->get_button_form( 'local', $what_site );
+		$prod_form = $this->get_what_site_button_form( 'production', $what_site );
+		$stg_form = $this->get_what_site_button_form( 'staging', $what_site );
+		$dev_form = $this->get_what_site_button_form( 'development', $what_site );
+		$local_form = $this->get_what_site_button_form( 'local', $what_site );
 
 		$fieldset_html = sprintf(
 				$fieldset_html_form,
@@ -324,6 +449,9 @@ class Class_Options_Page {
 		}
 		if ( isset( $input[ self::OPTION_NAME_WAIN ] ) ) {
 			$sanitized_values[ self::OPTION_NAME_WAIN ] = $input[ self::OPTION_NAME_WAIN ];
+		}
+		if ( isset( $input[ self::OPTION_NAME_GENERAL ] ) ) {
+			$sanitized_values[ self::OPTION_NAME_GENERAL ] = $input[ self::OPTION_NAME_GENERAL ];
 		}
 
 		return $sanitized_values;
