@@ -54,7 +54,6 @@ class Class_Options_Parts {
 		return $form_output;
 	}
 
-
 	public static function get_radio_button_form_template() {
 		$radio_button_form_template = '
 			<label for="%1$s">
@@ -65,39 +64,49 @@ class Class_Options_Parts {
 		return $radio_button_form_template;
 	}
 
-	public static function get_fieldset_html_form_4_buttons() {
+	public static function get_fieldset_html_form_buttons( $num_of_buttons ) {
 
-		/**
-		 * %1$s screen reader text
-		 * %2$s button 1
-		 * %3$s button 2
-		 * %4$s button 3
-		 * %5$s button 4
-		 * %6$s description text
-		 */
-		$fieldset_html_form = '
+		$str = '
+			%s
+			<br>';
+
+		$r = str_repeat( $str, $num_of_buttons );
+
+		$fieldset_html_form = "
 				<fieldset>
-					<legend class="screen-reader-text">
+					<legend class='screen-reader-text'>
 						<span>
-						%1$s
+						%s
 						</span>
 					</legend>
-					%2$s
-					<br>
-					%3$s
-					<br>
-					%4$s
-					<br>
-					%5$s
+					{$r}
 				</fieldset>
-				<p class="t2t-description">
-					%6$s
+				<p class='t2t-description'>
+					%s
 				</p>
-				';
+				";
 		return $fieldset_html_form;
 	}
 
+	public static function get_fieldset_html_checkbox_single(
+			$screen_reader_text,
+			$label_name_id,
+			$is_checked,
+			$description
+	) {
 
+		$fieldset_html_checkbox_single = "
+		<fieldset>
+		<legend class='screen-reader-text'><span>{$screen_reader_text}</span></legend>
+		<label for='{$label_name_id}'>
+		<input name='{$label_name_id}' type='checkbox' id='{$label_name_id}' {$is_checked}>
+		{$description}
+		</label>
+		</fieldset>
+";
+
+		return $fieldset_html_checkbox_single;
+	}
 
 	public static function the_2nd_toolbar_sanitize( $input ) {
 		$sanitized_values = array();

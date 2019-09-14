@@ -92,22 +92,24 @@ class Class_Options_Page {
 	}
 
 	public function add_setting_section() {
-		add_settings_section(
-				self::SETTING_SECTION_ID,
-				'My Custom Settings', // Title
-				array( $this, 'print_section_info' ), // Callback
-				self::PAGE_SLUG // Page
-		);
+//		add_settings_section(
+//				self::SETTING_SECTION_ID,
+//				'My Custom Settings', // Title
+//				array( $this, 'print_section_info' ), // Callback
+//				self::PAGE_SLUG // Page
+//		);
 		add_settings_section(
 				self::SETTING_SECTION_ID_GENERAL,
 				'General Settings', // Title
-				array( $this, 'print_section_info' ), // Callback
+				'',
+//				array( $this, 'print_section_info' ), // Callback
 				self::PAGE_SLUG // Page
 		);
 		add_settings_section(
 				self::SETTING_SECTION_ID_WAIN,
-				'Where AM I Now Settings', // Title
-				array( $this, 'print_section_info_wain' ), // Callback
+				'Where Am I Now Settings', // Title
+				'',
+//				array( $this, 'print_section_info_wain' ), // Callback
 				self::PAGE_SLUG // Page
 		);
 	}
@@ -119,26 +121,24 @@ class Class_Options_Page {
 //		foreach ( $array as $key => $value ) {
 //
 //		}
-
-		$parts->add_settings_field_template(
-				'id_number',
-				'ID Number',
-				array( $this, 'id_number_callback' ),
-				self::SETTING_SECTION_ID
-		);
-
-		$parts->add_settings_field_template(
-				'title',
-				'Title',
-				array( $this, 'title_callback' ),
-				self::SETTING_SECTION_ID
-		);
+//		$parts->add_settings_field_template(
+//				'id_number',
+//				'ID Number',
+//				array( $this, 'id_number_callback' ),
+//				self::SETTING_SECTION_ID
+//		);
+//
+//		$parts->add_settings_field_template(
+//				'title',
+//				'Title',
+//				array( $this, 'title_callback' ),
+//				self::SETTING_SECTION_ID
+//		);
 
 		$parts->add_settings_field_template(
 				'show_only_logged_in',
 				'Show only for logged in user',
 				[ $this, 'show_only_logged_in_callback' ],
-//				[ $this, 'height_options_callback' ],
 				self::SETTING_SECTION_ID_GENERAL
 		);
 
@@ -184,84 +184,78 @@ class Class_Options_Page {
 	/**
 	 * Get the settings option array and print one of its values
 	 */
-	public function id_number_callback() {
-		printf(
-				'<input type="text" id="id_number" name="%s[id_number]" value="%s" />',
-				self::OPTION_NAME,
-				isset( $this->options[ 'id_number' ] ) ? esc_attr( $this->options[ 'id_number' ] ) : ''
-		);
-	}
+//	public function id_number_callback() {
+//		printf(
+//				'<input type="text" id="id_number" name="%s[id_number]" value="%s" />',
+//				self::OPTION_NAME,
+//				isset( $this->options[ 'id_number' ] ) ? esc_attr( $this->options[ 'id_number' ] ) : ''
+//		);
+//	}
 
 	/**
 	 * Get the settings option array and print one of its values
 	 */
-	public function title_callback() {
-		printf(
-				'<input type="text" id="title" name="%s[title]" value="%s" />',
-				self::OPTION_NAME,
-				isset( $this->options[ 'title' ] ) ? esc_attr( $this->options[ 'title' ] ) : ''
-		);
-	}
+//	public function title_callback() {
+//		printf(
+//				'<input type="text" id="title" name="%s[title]" value="%s" />',
+//				self::OPTION_NAME,
+//				isset( $this->options[ 'title' ] ) ? esc_attr( $this->options[ 'title' ] ) : ''
+//		);
+//	}
 
 	public function show_only_logged_in_callback() {
 
 		$this->options = get_option( self::OPTION_NAME );
 
+		$parts = new Class_Options_Parts();
+
 		if ( isset( $this->options[ self::OPTION_NAME_ONLY_LOGGEDIN ] ) ) {
 			$current = $this->options[ self::OPTION_NAME_ONLY_LOGGEDIN ];
+			if ( 'on' === $current ) {
+				$is_checked = 'checked';
+			}
 		} else {
-			$current = '';
+			$is_checked = '';
 		}
 
 		$screen_reader_text = '';
 		$label_name_id = self::OPTION_NAME . '[' . self::OPTION_NAME_ONLY_LOGGEDIN . ']';
 
-		if ( '1' === $current ) {
-			$is_checked = 'checked';
-		} else {
-			$is_checked = '';
-		}
-
 		$description = 'Show the toolbar for only logged in users.';
 
-		$fieldset_html_checkbox = "
-		<fieldset>
-		<legend class='screen-reader-text'><span>{$screen_reader_text}</span></legend>
-		<label for='{$label_name_id}'>
-		<input name='{$label_name_id}' type='checkbox' id='{$label_name_id}' {$is_checked}  value='1'>
-		{$description}
-		</label>
-		</fieldset>
-";
+		$fieldset_html = $parts->get_fieldset_html_checkbox_single(
+				$screen_reader_text,
+				$label_name_id,
+				$is_checked,
+				$description
+		);
 
-		echo $fieldset_html_checkbox;
+		echo $fieldset_html;
 	}
 
 	public function height_options_callback() {
 
-		$fieldset_html_form = '
-				<fieldset>
-					<legend class="screen-reader-text">
-						<span>
-						%1$s
-						</span>
-					</legend>
-					%2$s
-					<br>
-					%3$s
-					<br>
-					%4$s
-				</fieldset>
-				<p class="t2t-description">
-					%5$s
-				</p>
-				';
+		$parts = new Class_Options_Parts;
+
+		$fieldset_html_form = $parts->get_fieldset_html_form_buttons( 3 );
 
 		$what_height = $this->get_what_height_checked();
 
-		$height_32_form = $this->get_height_radio_button_form( 'height32px', 'height32px', $what_height[ '32' ], '32px (same as the default toolbar)' );
-		$height_48_form = $this->get_height_radio_button_form( 'height48px', 'height48px', $what_height[ '48' ], '48px (1.5 times as high as the default toolbar)' );
-		$height_64_form = $this->get_height_radio_button_form( 'height64px', 'height64px', $what_height[ '64' ], '64px (2 times as high as the default toolbar)' );
+		$height_32_form = $this->get_height_radio_button_form(
+				'height32px',
+				'height32px',
+				$what_height[ '32' ],
+				'32px (same as the default toolbar)' );
+		$height_48_form = $this->get_height_radio_button_form(
+				'height48px',
+				'height48px',
+				$what_height[ '48' ],
+				'48px (1.5 times as high as the default toolbar)' );
+		$height_64_form = $this->get_height_radio_button_form(
+				'height64px',
+				'height64px',
+				$what_height[ '64' ],
+				'64px (2 times as high as the default toolbar)' );
 
 		$fieldset_html = sprintf(
 				$fieldset_html_form,
@@ -279,18 +273,14 @@ class Class_Options_Page {
 
 		$this->options = get_option( self::OPTION_NAME );
 
-		$str = '';
-
 		if ( true === isset( $this->options[ self::OPTION_NAME_GENERAL ] ) ) {
 			$str = $this->options[ self::OPTION_NAME_GENERAL ];
+		} else {
+			$str = '';
 		}
 
-		$height = array(
-			'32' => '',
-			'48' => '',
-			'64' => '',
-			'unknown' => '',
-		);
+		$keys = array( '32', '48', 64, 'unknown' );
+		$height = array_fill_keys( $keys, '' );
 
 		if ( 'height32px' === $str ) {
 			$height[ '32' ] = 'checked';
@@ -332,7 +322,7 @@ class Class_Options_Page {
 
 		$parts = new Class_Options_Parts();
 
-		$fieldset_html_form = $parts->get_fieldset_html_form_4_buttons();
+		$fieldset_html_form = $parts->get_fieldset_html_form_buttons( 4 );
 
 		$what_position = $this->get_what_position_checked();
 
@@ -391,13 +381,9 @@ class Class_Options_Page {
 	}
 
 	public function decide_what_position_checked( $str ) {
-		$what_site = array(
-			'top' => '',
-			'bottom' => '',
-			'left' => '',
-			'right' => '',
-			'unknown' => '',
-		);
+
+		$keys = array( 'top', 'bottom', 'left', 'unknown' );
+		$what_site = array_fill_keys( $keys, '' );
 
 		if ( 'top' === $str ) {
 			$what_site[ 'top' ] = 'checked';
@@ -415,13 +401,9 @@ class Class_Options_Page {
 	}
 
 	public function decide_what_site_checked( $str ) {
-		$what_site = array(
-			'production' => '',
-			'staging' => '',
-			'development' => '',
-			'local' => '',
-			'unknown' => '',
-		);
+
+		$keys = array( 'production', 'staging', 'development', 'local', 'unknown' );
+		$what_site = array_fill_keys( $keys, '' );
 
 		if ( 'production-site' === $str ) {
 			$what_site[ 'production' ] = 'checked';
@@ -465,16 +447,6 @@ class Class_Options_Page {
 		return $id_num;
 	}
 
-//	public function get_radio_button_form() {
-//		$radio_button_form = '
-//			<label for="%1$s">
-//				<input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s>%5$s
-//			</label>
-//			';
-//
-//		return $radio_button_form;
-//	}
-
 	public function get_what_site_button_form( $site_env_type, $what_site ) {
 
 		$what_site_key = array_search( 'checked', $what_site );
@@ -505,11 +477,9 @@ class Class_Options_Page {
 
 	public function where_am_i_now_setting_callback() {
 
-//		$fieldset_html_form = $this->get_fieldset_html_form();
-
 		$parts = new Class_Options_Parts();
 
-		$fieldset_html_form = $parts->get_fieldset_html_form_4_buttons();
+		$fieldset_html_form = $parts->get_fieldset_html_form_buttons( 4 );
 
 		$what_site = $this->get_what_site_checked();
 
