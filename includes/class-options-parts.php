@@ -22,7 +22,7 @@ class Class_Options_Parts {
 				$callback, // Callback
 				self::PAGE_SLUG, // Page
 				$setting_section_id, // Section
-				array( 'label_for' => $id ),
+				[ 'label_for' => $id ],
 		);
 	}
 
@@ -109,7 +109,7 @@ class Class_Options_Parts {
 	}
 
 	public static function the_2nd_toolbar_sanitize( $input ) {
-		$sanitized_values = array();
+		$sanitized_values = [];
 
 		if ( isset( $input[ 'id_number' ] ) ) {
 			$sanitized_values[ 'id_number' ] = absint( $input[ 'id_number' ] );

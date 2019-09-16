@@ -106,7 +106,7 @@ class Output_The_2nd_Toolbar {
 	public function add_the_2nd_toolbar_css() {
 
 		$stylesheet_path = WP_T2T_PLUGIN_DIR_URL . '/css/style.css';
-		$css_file_ver = get_file_data( WP_T2T_PLUGIN_FILE_PATH, array( 'Version' ) );
+		$css_file_ver = get_file_data( WP_T2T_PLUGIN_FILE_PATH, [ 'Version' ] );
 
 		wp_register_style( 'the-2nd-toolbar-style', $stylesheet_path, [], $css_file_ver );
 		wp_enqueue_style( 'the-2nd-toolbar-style' );

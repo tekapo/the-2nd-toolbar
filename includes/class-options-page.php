@@ -54,8 +54,8 @@ class Class_Options_Page {
 	 * Start up
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
-		add_action( 'admin_init', array( $this, 'page_init' ) );
+		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
+		add_action( 'admin_init', [ $this, 'page_init' ] );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Class_Options_Page {
 				$setting_page_and_menu_title,
 				'manage_options',
 				self::PAGE_SLUG, //	'the-2nd-toolbar-options',
-				array( $this, 'create_admin_page' )
+				[ $this, 'create_admin_page' ]
 		);
 	}
 
@@ -107,7 +107,7 @@ class Class_Options_Page {
 		register_setting(
 				self::OPTION_GROUP, // Option group
 				self::OPTION_NAME, // Option name
-				array( $this, 'the_2nd_toolbar_sanitize' ) // Sanitize
+				[ $this, 'the_2nd_toolbar_sanitize' ] // Sanitize
 		);
 	}
 
@@ -165,21 +165,21 @@ class Class_Options_Page {
 		$parts->add_settings_field_template(
 				'height',
 				'Height',
-				array( $this, 'height_options_callback' ),
+				[ $this, 'height_options_callback' ],
 				self::SETTING_SECTION_ID_GENERAL
 		);
 
 		$parts->add_settings_field_template(
 				'position',
 				'Position',
-				array( $this, 'position_options_callback' ),
+				[ $this, 'position_options_callback' ],
 				self::SETTING_SECTION_ID_GENERAL
 		);
 
 		$parts->add_settings_field_template(
 				'where_am_i_now_setting_id',
 				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
-				array( $this, 'where_am_i_now_setting_callback' ),
+				[ $this, 'where_am_i_now_setting_callback' ],
 				self::SETTING_SECTION_ID_WAIN, // Section
 		);
 	}
@@ -298,7 +298,7 @@ class Class_Options_Page {
 			$str = '';
 		}
 
-		$keys = array( '32', '48', 64, 'unknown' );
+		$keys = [ '32', '48', 64, 'unknown' ];
 		$height = array_fill_keys( $keys, '' );
 
 		if ( 'height32px' === $str ) {
@@ -401,7 +401,7 @@ class Class_Options_Page {
 
 	public function decide_what_position_checked( $str ) {
 
-		$keys = array( 'top', 'bottom', 'left', 'unknown' );
+		$keys = [ 'top', 'bottom', 'left', 'unknown' ];
 		$what_site = array_fill_keys( $keys, '' );
 
 		if ( 'top' === $str ) {
@@ -421,7 +421,7 @@ class Class_Options_Page {
 
 	public function decide_what_site_checked( $str ) {
 
-		$keys = array( 'production', 'staging', 'development', 'local', 'unknown' );
+		$keys = [ 'production', 'staging', 'development', 'local', 'unknown' ];
 		$what_site = array_fill_keys( $keys, '' );
 
 		if ( 'production-site' === $str ) {
@@ -521,7 +521,7 @@ class Class_Options_Page {
 	}
 
 	public function the_2nd_toolbar_sanitize( $input ) {
-		$sanitized_values = array();
+		$sanitized_values = [];
 
 		if ( isset( $input[ 'id_number' ] ) ) {
 			$sanitized_values[ 'id_number' ] = absint( $input[ 'id_number' ] );
