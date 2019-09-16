@@ -2,6 +2,26 @@
 /*
  * @todo
  *
+ * add textbox:
+ *
+ * add top option:
+ *
+ * Choodse what you want to show in the 2nd toolbar
+ * - free text
+ * -
+ *
+ * - show free text
+ *
+ * add checkbox:
+ *
+ * - show Where Am I Now
+ * - show WP_DEBUG
+ * - show WP_LOCAL_DEV
+ * - show time
+ *
+ * You wanna the 3rd and 4th toolbar?
+ *
+ *
  * How to sanitize radio value?
  *
  * how about specifing these?
@@ -220,7 +240,6 @@ class Class_Options_Page {
 
 		$screen_reader_text = '';
 		$label_name_id = self::OPTION_NAME . '[' . self::OPTION_NAME_ONLY_LOGGEDIN . ']';
-
 		$description = 'Show the toolbar for only logged in users.';
 
 		$fieldset_html = $parts->get_fieldset_html_checkbox_single(
