@@ -7,7 +7,18 @@
 
 class Class_Options_Parts {
 
+	public const OPTION_NAME = 't2t_option_name';
+	public const OPTION_GROUP = 't2t_option_group';
 	public const PAGE_SLUG = 'the-2nd-toolbar-options';
+	public const SETTING_SECTION_ID = 't2t_setting_section_id';
+	public const OPTION_NAME_GENERAL = 't2t_setting_name_general';
+	public const SETTING_SECTION_ID_ONLY_LOGEDIN = 't2t_setting_section_id_only_logged_in';
+	public const OPTION_NAME_ONLY_LOGGEDIN = 't2t_setting_name_only_logged_in';
+	public const SETTING_SECTION_ID_GENERAL = 't2t_setting_section_id_general';
+	public const OPTION_NAME_POSITION = 't2t_setting_name_position';
+	public const SETTING_SECTION_ID_POSITION = 't2t_setting_section_id_position';
+	public const OPTION_NAME_WAIN = 'where_am_i_now';
+	public const SETTING_SECTION_ID_WAIN = 't2t_setting_section_id_wain';
 
 	public static function add_settings_field_template(
 			$id,

@@ -41,7 +41,7 @@ class Class_Options_Page {
 	public const OPTION_GROUP = 't2t_option_group';
 	public const PAGE_SLUG = 'the-2nd-toolbar-options';
 	public const SETTING_SECTION_ID = 't2t_setting_section_id';
-	public const OPTION_NAME_GENERAL = 't2t_setting_name_general';
+	public const OPTION_NAME_HEIGHT = 't2t_setting_name_general';
 	public const SETTING_SECTION_ID_ONLY_LOGEDIN = 't2t_setting_section_id_only_logged_in';
 	public const OPTION_NAME_ONLY_LOGGEDIN = 't2t_setting_name_only_logged_in';
 	public const SETTING_SECTION_ID_GENERAL = 't2t_setting_section_id_general';
@@ -104,9 +104,13 @@ class Class_Options_Page {
 	 * Register and add settings
 	 */
 	public function register_setting() {
+
+//		$parts = new Class_Options_Parts();
+
 		register_setting(
 				self::OPTION_GROUP, // Option group
 				self::OPTION_NAME, // Option name
+//				[ $parts->the_2nd_toolbar_sanitize($input)]
 				[ $this, 'the_2nd_toolbar_sanitize' ] // Sanitize
 		);
 	}
@@ -262,17 +266,17 @@ class Class_Options_Page {
 
 		$height_32_form = $this->get_height_radio_button_form(
 				'height32px',
-				'height32px',
+				'32',
 				$what_height[ '32' ],
 				'32px (same as the default toolbar)' );
 		$height_48_form = $this->get_height_radio_button_form(
 				'height48px',
-				'height48px',
+				'48',
 				$what_height[ '48' ],
 				'48px (1.5 times as high as the default toolbar)' );
 		$height_64_form = $this->get_height_radio_button_form(
 				'height64px',
-				'height64px',
+				'64',
 				$what_height[ '64' ],
 				'64px (2 times as high as the default toolbar)' );
 
@@ -292,23 +296,23 @@ class Class_Options_Page {
 
 		$this->options = get_option( self::OPTION_NAME );
 
-		if ( true === isset( $this->options[ self::OPTION_NAME_GENERAL ] ) ) {
-			$str = $this->options[ self::OPTION_NAME_GENERAL ];
+		if ( true === isset( $this->options[ self::OPTION_NAME_HEIGHT ] ) ) {
+			$num = ( int ) $this->options[ self::OPTION_NAME_HEIGHT ];
 		} else {
-			$str = '';
+			$num = 404;
 		}
 
-		$keys = [ '32', '48', 64, 'unknown' ];
+		$keys = [ '32', '48', '64', 'unknown' ];
 		$height = array_fill_keys( $keys, '' );
 
-		if ( 'height32px' === $str ) {
+		if ( 32 === $num ) {
 			$height[ '32' ] = 'checked';
-		} elseif ( 'height48px' === $str ) {
+		} elseif ( 48 === $num ) {
 			$height[ '48' ] = 'checked';
-		} elseif ( 'height64px' === $str ) {
+		} elseif ( 64 === $num ) {
 			$height[ '64' ] = 'checked';
 		} else {
-			$height[ 'unknown' ] = $str;
+			$height[ 'unknown' ] = $num;
 		}
 
 		return $height;
@@ -324,7 +328,7 @@ class Class_Options_Page {
 
 		$radio_button_form = $parts->get_radio_button_form_template();
 
-		$input_name = self::OPTION_NAME . '[' . self::OPTION_NAME_GENERAL . ']';
+		$input_name = self::OPTION_NAME . '[' . self::OPTION_NAME_HEIGHT . ']';
 
 		$form_output = sprintf(
 				$radio_button_form,
@@ -401,7 +405,7 @@ class Class_Options_Page {
 
 	public function decide_what_position_checked( $str ) {
 
-		$keys = [ 'top', 'bottom', 'left', 'unknown' ];
+		$keys = [ 'top', 'bottom', 'left', 'right', 'unknown' ];
 		$what_site = array_fill_keys( $keys, '' );
 
 		if ( 'top' === $str ) {
@@ -529,17 +533,23 @@ class Class_Options_Page {
 		if ( isset( $input[ 'title' ] ) ) {
 			$sanitized_values[ 'title' ] = sanitize_text_field( $input[ 'title' ] );
 		}
-		if ( isset( $input[ self::OPTION_NAME_ONLY_LOGGEDIN ] ) ) {
-			$sanitized_values[ self::OPTION_NAME_ONLY_LOGGEDIN ] = $input[ self::OPTION_NAME_ONLY_LOGGEDIN ];
-		}
 		if ( isset( $input[ self::OPTION_NAME_WAIN ] ) ) {
-			$sanitized_values[ self::OPTION_NAME_WAIN ] = $input[ self::OPTION_NAME_WAIN ];
+			if ( preg_match( '#[A-Za-z]#', $input[ self::OPTION_NAME_WAIN ] ) ) {
+				$sanitized_values[ self::OPTION_NAME_WAIN ] = $input[ self::OPTION_NAME_WAIN ];
+			}
 		}
-		if ( isset( $input[ self::OPTION_NAME_GENERAL ] ) ) {
-			$sanitized_values[ self::OPTION_NAME_GENERAL ] = $input[ self::OPTION_NAME_GENERAL ];
+		if ( isset( $input[ self::OPTION_NAME_ONLY_LOGGEDIN ] ) ) {
+			if ( 'on' === $input[ self::OPTION_NAME_ONLY_LOGGEDIN ] ) {
+				$sanitized_values[ self::OPTION_NAME_ONLY_LOGGEDIN ] = $input[ self::OPTION_NAME_ONLY_LOGGEDIN ];
+			}
+		}
+		if ( isset( $input[ self::OPTION_NAME_HEIGHT ] ) ) {
+			$sanitized_values[ self::OPTION_NAME_HEIGHT ] = absint( $input[ self::OPTION_NAME_HEIGHT ] );
 		}
 		if ( isset( $input[ self::OPTION_NAME_POSITION ] ) ) {
-			$sanitized_values[ self::OPTION_NAME_POSITION ] = $input[ self::OPTION_NAME_POSITION ];
+			if ( preg_match( '#[A-Za-z]#', $input[ self::OPTION_NAME_POSITION ] ) ) {
+				$sanitized_values[ self::OPTION_NAME_POSITION ] = $input[ self::OPTION_NAME_POSITION ];
+			}
 		}
 
 		return $sanitized_values;
