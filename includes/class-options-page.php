@@ -204,7 +204,9 @@ class Class_Options_Page {
 	public function print_section_info_wain() {
 		echo __( 'Where Am I Now', 'the-2nd-toolbar' );
 	}
-
+	public function print_section_info2() {
+		return 'Enter your settings below:';
+	}
 	/**
 	 * Get the settings option array and print one of its values
 	 */
