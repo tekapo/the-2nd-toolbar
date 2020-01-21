@@ -11,3 +11,4 @@ yarn.lock
 composer.json
 composer.lock
 vendor/
+/nbproject/

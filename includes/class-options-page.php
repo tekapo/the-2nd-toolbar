@@ -483,6 +483,11 @@ class Class_Options_Page {
 	}
 
 	public function get_what_site_button_form( $site_env_type, $what_site ) {
+        
+        if (is_null($what_site)) {
+            echo 'Choose one of them:';
+            $what_site = ['none'];
+        }
 
 		$what_site_key = array_search( 'checked', $what_site );
 

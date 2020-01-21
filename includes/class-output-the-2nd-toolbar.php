@@ -50,7 +50,8 @@ class Output_The_2nd_Toolbar {
 		$t2t_bar_color_css_name = $notice_html[0];
 		$height_css_name = $this->get_height_css_class_name();
 		
-//		var_dump($height_css_name);
+//		var_dump($notice_html);
+//        echo 'XXX';
 		
 		$format = '<div class="t2t-outer %s %s">';
 		$format_str = sprintf( 
@@ -86,7 +87,7 @@ class Output_The_2nd_Toolbar {
 		} elseif ( 64 === $t2t_height_value ) {
 			$height_css_class_name = 'height_64px';
 		} else {
-			$height_css_class_name = 'someting wrong with get_height_css_class_name method';
+			$height_css_class_name = 'someting-wrong-with-get_height_css_class_name-method';
 		}
 		
 		return $height_css_class_name;
@@ -108,6 +109,12 @@ class Output_The_2nd_Toolbar {
 
 		$t2t_options = get_option( self::OPTION_NAME );
 		$what_server = $t2t_options[ self::OPTION_NAME_WAIN ];
+        
+//        var_dump($what_server);
+        
+        if ( is_null($what_server ) ) {
+            $what_server = 'unknown-site';
+        }
 
 		$server_span_class = $what_server;
 
