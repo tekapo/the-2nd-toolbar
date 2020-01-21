@@ -204,9 +204,11 @@ class Class_Options_Page {
 	public function print_section_info_wain() {
 		echo __( 'Where Am I Now', 'the-2nd-toolbar' );
 	}
+
 	public function print_section_info2() {
 		return 'Enter your settings below:';
 	}
+
 	/**
 	 * Get the settings option array and print one of its values
 	 */
@@ -369,16 +371,15 @@ class Class_Options_Page {
 		echo $fieldset_html;
 	}
 
-	public function get_what_position_button_form( 
+	public function get_what_position_button_form(
 			$label_and_name,
 			$what_position
-			) 
-			{
-		
+	) {
+
 		if ( is_null( $what_position ) ) {
 			return;
 		}
-		
+
 		$what_position_key = array_search( 'checked', $what_position );
 
 		$is_checked = '';
