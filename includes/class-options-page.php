@@ -369,7 +369,16 @@ class Class_Options_Page {
 		echo $fieldset_html;
 	}
 
-	public function get_what_position_button_form( $label_and_name, $what_position ) {
+	public function get_what_position_button_form( 
+			$label_and_name,
+			$what_position
+			) 
+			{
+		
+		if ( is_null( $what_position ) ) {
+			return;
+		}
+		
 		$what_position_key = array_search( 'checked', $what_position );
 
 		$is_checked = '';
