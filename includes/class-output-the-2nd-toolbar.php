@@ -47,12 +47,50 @@ class Output_The_2nd_Toolbar {
 	public function echo_the_2nd_toolbar_outer_html() {
 
 		$notice_html = $this->get_where_am_i_now_html();
+		$t2t_bar_color_css_name = $notice_html[0];
+		$height_css_name = $this->get_height_css_class_name();
+		
+//		var_dump($height_css_name);
+		
+		$format = '<div class="t2t-outer %s %s">';
+		$format_str = sprintf( 
+				$format,
+				$t2t_bar_color_css_name,
+				$height_css_name
+				);
 
-		echo '<div class="t2t-outer ' . $notice_html[0] . '">';
+		echo $format_str;
 
 		do_action('the_2nd_toolbar_innner_html');
 
 		echo '</div>';
+		
+	}
+	
+	public function get_height_option_value() {
+		$t2t_options = get_option( self::OPTION_NAME );
+		$t2t_height_value = $t2t_options['t2t_setting_name_height'];
+		
+		return $t2t_height_value;	
+	}
+	
+	public function get_height_css_class_name() {
+		$t2t_height_value = $this->get_height_option_value();
+		
+//		var_dump($t2t_height_value);
+		
+		if ( 32 === $t2t_height_value ) {
+			$height_css_class_name = 'height_32px';
+		} elseif ( 48 === $t2t_height_value ) {
+			$height_css_class_name = 'height_48px';
+		} elseif ( 64 === $t2t_height_value ) {
+			$height_css_class_name = 'height_64px';
+		} else {
+			$height_css_class_name = 'someting wrong with get_height_css_class_name method';
+		}
+		
+		return $height_css_class_name;
+		
 	}
 
 	public function echo_where_am_i_now_html() {

@@ -41,7 +41,7 @@ class Class_Options_Page {
 	public const OPTION_GROUP = 't2t_option_group';
 	public const PAGE_SLUG = 'the-2nd-toolbar-options';
 	public const SETTING_SECTION_ID = 't2t_setting_section_id';
-	public const OPTION_NAME_HEIGHT = 't2t_setting_name_general';
+	public const OPTION_NAME_HEIGHT = 't2t_setting_name_height';
 	public const SETTING_SECTION_ID_ONLY_LOGEDIN = 't2t_setting_section_id_only_logged_in';
 	public const OPTION_NAME_ONLY_LOGGEDIN = 't2t_setting_name_only_logged_in';
 	public const SETTING_SECTION_ID_GENERAL = 't2t_setting_section_id_general';
