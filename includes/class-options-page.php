@@ -159,12 +159,12 @@ class Class_Options_Page {
 //				self::SETTING_SECTION_ID
 //		);
 
-		$parts->add_settings_field_template(
-				'show_only_logged_in',
-				'Show only for logged in user',
-				[ $this, 'show_only_logged_in_callback' ],
-				self::SETTING_SECTION_ID_GENERAL
-		);
+//		$parts->add_settings_field_template(
+//				'show_only_logged_in',
+//				'Show only for logged in user',
+//				[ $this, 'show_only_logged_in_callback' ],
+//				self::SETTING_SECTION_ID_GENERAL
+//		);
 
 		$parts->add_settings_field_template(
 				'height',
@@ -173,12 +173,12 @@ class Class_Options_Page {
 				self::SETTING_SECTION_ID_GENERAL
 		);
 
-		$parts->add_settings_field_template(
-				'position',
-				'Position',
-				[ $this, 'position_options_callback' ],
-				self::SETTING_SECTION_ID_GENERAL
-		);
+//		$parts->add_settings_field_template(
+//				'position',
+//				'Position',
+//				[ $this, 'position_options_callback' ],
+//				self::SETTING_SECTION_ID_GENERAL
+//		);
 
 		$parts->add_settings_field_template(
 				'where_am_i_now_setting_id',
