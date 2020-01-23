@@ -1,11 +1,23 @@
 {
   "name": "the-2nd-toolbar",
-  "version": "0.1.0",
-  "main": "Gruntfile.js",
-  "author": "YOUR NAME HERE",
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-wp-i18n": "~0.5.0",
-    "grunt-wp-readme-to-markdown": "~1.0.0"
-  }
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass sass/style.scss css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tekapo/the-2nd-toolbar.git"
+  },
+  "author": "",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/tekapo/the-2nd-toolbar/issues"
+  },
+  "homepage": "https://github.com/tekapo/the-2nd-toolbar#readme"
 }

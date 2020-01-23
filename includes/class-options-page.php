@@ -303,9 +303,9 @@ class Class_Options_Page {
 		if ( true === isset( $this->options[ self::OPTION_NAME_HEIGHT ] ) ) {
 			$num = ( int ) $this->options[ self::OPTION_NAME_HEIGHT ];
 		} else {
-			$num = 404;
+			$num = 32;
 		}
-
+        
 		$keys = [ '32', '48', '64', 'unknown' ];
 		$height = array_fill_keys( $keys, '' );
 
