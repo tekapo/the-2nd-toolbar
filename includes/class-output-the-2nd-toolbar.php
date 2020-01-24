@@ -69,7 +69,7 @@ class Output_The_2nd_Toolbar {
 		$t2t_options = get_option( self::OPTION_NAME );
 		$t2t_height_value = $t2t_options['t2t_setting_name_height'];
         
-        var_dump($t2t_height_value);
+//        var_dump($t2t_height_value);
 		
 		return $t2t_height_value;	
 	}
@@ -77,7 +77,7 @@ class Output_The_2nd_Toolbar {
 	public function get_height_css_class_name() {
 		$t2t_height_value = $this->get_height_option_value();
 		
-		var_dump($t2t_height_value);
+//		var_dump($t2t_height_value);
 		
 		if ( 32 === $t2t_height_value ) {
 			$height_css_class_name = 'height_32px';

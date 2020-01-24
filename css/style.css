@@ -52,7 +52,9 @@
 
 html,
 html.wp-toolbar {
-  padding-top: 80px;
+  padding-top: 64px;
+  /*padding-top: 80px;*/
+  /*padding-top: 96px;*/
 }
 
 /*# sourceMappingURL=style.css.map */
