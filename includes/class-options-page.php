@@ -505,8 +505,20 @@ class Class_Options_Page {
 
 		$parts = new Class_Options_Parts();
 
+		if ( 'production' === $site_env_type ) {
+			$server_type = __( 'production', 'the-2nd-toolbar' );
+		} elseif ( 'staging' === $site_env_type ) {
+			$server_type = __( 'staging', 'the-2nd-toolbar' );
+		} elseif ( 'development' === $site_env_type ) {
+			$server_type = __( 'development', 'the-2nd-toolbar' );
+		} elseif ( 'local' === $site_env_type ) {
+			$server_type = __( 'local', 'the-2nd-toolbar' );
+		} else {
+			$server_type = __( 'unknown', 'the-2nd-toolbar' );
+		}
+		
 		$server_type_str_format = __( 'The %s server.', 'the-2nd-toolbar' );
-		$server_type_str = sprintf( $server_type_str_format, $site_env_type );
+		$server_type_str = sprintf( $server_type_str_format, $server_type );
 
 		$form_output = sprintf(
 				$parts->get_radio_button_form_template(),
