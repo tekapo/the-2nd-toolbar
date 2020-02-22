@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: The 2nd toolbar\n"
-"POT-Creation-Date: 2019-08-27 23:17+0900\n"
-"PO-Revision-Date: 2019-08-27 23:18+0900\n"
+"POT-Creation-Date: 2020-02-22 13:53+0900\n"
+"PO-Revision-Date: 2020-02-22 13:53+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -22,63 +22,104 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: inc/class-output-notice-msg.php:53
+#: includes/class-options-page.php:66
+msgid "The 2nd Toolbar"
+msgstr "2 番目のツールバー"
+
+#: includes/class-options-page.php:83
+msgid "The 2nd Toolbar Settings"
+msgstr "2番目のツールバー設定"
+
+#: includes/class-options-page.php:127
+msgid "Toolbar hight Settings"
+msgstr "ツールバーの高さ設定"
+
+#: includes/class-options-page.php:134
+msgid "Where Am I Now Settings"
+msgstr "Where Am I Now 設定"
+
+#: includes/class-options-page.php:170
+msgid "Toolbar Height"
+msgstr "ツールバーの高さ"
+
+#: includes/class-options-page.php:184
+msgid "Toolbar position"
+msgstr "ツールバーの位置"
+
+#: includes/class-options-page.php:204
+msgid "Where Am I Now"
+msgstr "Where Am I Now"
+
+#: includes/class-options-page.php:274
+msgid "32px (same as the default toolbar)"
+msgstr "32px (デフォルトのツールバーと同じ)"
+
+#: includes/class-options-page.php:280
+msgid "48px (1.5 times as high as the default toolbar)"
+msgstr "48px (デフォルトのツールバーの1.5倍)"
+
+#: includes/class-options-page.php:286
+msgid "64px (2 times as high as the default toolbar)"
+msgstr "64px (デフォルトのツールバーの2倍)"
+
+#: includes/class-options-page.php:291
+msgid "Height of the toolbar."
+msgstr "ツールバーの高さ。"
+
+#: includes/class-options-page.php:295
+msgid "Choose how high the toolbar is."
+msgstr "ツールバーの高さを選択します。"
+
+#: includes/class-options-page.php:365
+msgid "Position Setting"
+msgstr "位置設定"
+
+#: includes/class-options-page.php:370
+msgid "Choose what position the toolbar appear."
+msgstr "ツールバーの表示位置を選択します。"
+
+#: includes/class-options-page.php:508
+#, php-format
+msgid "The %s server."
+msgstr "%sサーバー"
+
+#: includes/class-options-page.php:538
+msgid "Where Am I Now Setting"
+msgstr "Where Am I Now 設定"
+
+#: includes/class-options-page.php:543
+msgid "Choose what server your WordPress running on."
+msgstr "WordPress が実行されているサーバーを選択してください。"
+
+#: includes/class-output-the-2nd-toolbar.php:120
 #, php-format
 msgid "This site is on %s."
 msgstr "このサイトは%sで動いています。"
 
-#: inc/class-output-notice-msg.php:55
+#: includes/class-output-the-2nd-toolbar.php:122
 #, php-format
 msgid "%s server"
 msgstr "%sサーバー"
 
-#: inc/class-output-notice-msg.php:75
+#: includes/class-output-the-2nd-toolbar.php:136
 msgid "the production"
 msgstr "本番"
 
-#: inc/class-output-notice-msg.php:76
+#: includes/class-output-the-2nd-toolbar.php:138
 msgid "the staging"
 msgstr "ステージング"
 
-#: inc/class-output-notice-msg.php:77
+#: includes/class-output-the-2nd-toolbar.php:140
 msgid "the development"
 msgstr "開発"
 
-#: inc/class-output-notice-msg.php:78
+#: includes/class-output-the-2nd-toolbar.php:142
 msgid "the local"
 msgstr "ローカル"
 
-#: inc/class-output-notice-msg.php:79
+#: includes/class-output-the-2nd-toolbar.php:144
 msgid "an unknown"
 msgstr "不明な"
-
-#: inc/class-settings.php:26
-msgid "The 2nd Toolbar setting"
-msgstr "2番目のツールバー設定"
-
-#: inc/class-settings.php:77
-msgid "The production server"
-msgstr "本番サーバー"
-
-#: inc/class-settings.php:86
-msgid "The staging server"
-msgstr "ステージングサーバー"
-
-#: inc/class-settings.php:95
-msgid "The development server"
-msgstr "開発サーバー"
-
-#: inc/class-settings.php:104
-msgid "The local server"
-msgstr "ローカルサーバー"
-
-#: inc/class-settings.php:129
-msgid "Where Am I Now Setting"
-msgstr "Where Am I Now 設定"
-
-#: inc/class-settings.php:134
-msgid "Choose what server your WordPress running on."
-msgstr "WordPress が実行されているサーバーを選択してください。"
 
 #. Plugin Name of the plugin/theme
 msgid "The 2nd toolbar"
@@ -102,6 +143,18 @@ msgstr "上滝太祐"
 #. Author URI of the plugin/theme
 msgid "https://tekapo.com/"
 msgstr "https://tekapo.com/"
+
+#~ msgid "The production server"
+#~ msgstr "本番サーバー"
+
+#~ msgid "The staging server"
+#~ msgstr "ステージングサーバー"
+
+#~ msgid "The development server"
+#~ msgstr "開発サーバー"
+
+#~ msgid "The local server"
+#~ msgstr "ローカルサーバー"
 
 #~ msgid ""
 #~ "A WordPress plugin that shows what environment (a production site, a "

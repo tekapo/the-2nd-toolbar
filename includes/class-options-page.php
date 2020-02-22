@@ -124,14 +124,14 @@ class Class_Options_Page {
 //		);
 		add_settings_section(
 				self::SETTING_SECTION_ID_GENERAL,
-				'General Settings', // Title
+				__( 'Toolbar hight Settings', 'the-2nd-toolbar' ), // Title
 				'',
 //				array( $this, 'print_section_info' ), // Callback
 				self::PAGE_SLUG // Page
 		);
 		add_settings_section(
 				self::SETTING_SECTION_ID_WAIN,
-				'Where Am I Now Settings', // Title
+				__( 'Where Am I Now Settings', 'the-2nd-toolbar' ), // Title
 				'',
 //				array( $this, 'print_section_info_wain' ), // Callback
 				self::PAGE_SLUG // Page
@@ -158,7 +158,6 @@ class Class_Options_Page {
 //				array( $this, 'title_callback' ),
 //				self::SETTING_SECTION_ID
 //		);
-
 //		$parts->add_settings_field_template(
 //				'show_only_logged_in',
 //				'Show only for logged in user',
@@ -168,7 +167,7 @@ class Class_Options_Page {
 
 		$parts->add_settings_field_template(
 				'height',
-				'Height',
+				__( 'Toolbar Height', 'the-2nd-toolbar' ),
 				[ $this, 'height_options_callback' ],
 				self::SETTING_SECTION_ID_GENERAL
 		);
@@ -182,7 +181,7 @@ class Class_Options_Page {
 
 		$parts->add_settings_field_template(
 				'where_am_i_now_setting_id',
-				__( 'Where Am I Now Setting', 'the-2nd-toolbar' ),
+				__( 'Toolbar position', 'the-2nd-toolbar' ),
 				[ $this, 'where_am_i_now_setting_callback' ],
 				self::SETTING_SECTION_ID_WAIN, // Section
 		);
@@ -272,17 +271,20 @@ class Class_Options_Page {
 				'height32px',
 				'32',
 				$what_height[ '32' ],
-				'32px (same as the default toolbar)' );
+				__( '32px (same as the default toolbar)', 'the-2nd-toolbar' )
+		);
 		$height_48_form = $this->get_height_radio_button_form(
 				'height48px',
 				'48',
 				$what_height[ '48' ],
-				'48px (1.5 times as high as the default toolbar)' );
+				__( '48px (1.5 times as high as the default toolbar)', 'the-2nd-toolbar' )
+		);
 		$height_64_form = $this->get_height_radio_button_form(
 				'height64px',
 				'64',
 				$what_height[ '64' ],
-				'64px (2 times as high as the default toolbar)' );
+				__( '64px (2 times as high as the default toolbar)', 'the-2nd-toolbar' )
+		);
 
 		$fieldset_html = sprintf(
 				$fieldset_html_form,
@@ -305,7 +307,7 @@ class Class_Options_Page {
 		} else {
 			$num = 32;
 		}
-        
+
 		$keys = [ '32', '48', '64', 'unknown' ];
 		$height = array_fill_keys( $keys, '' );
 
@@ -483,11 +485,11 @@ class Class_Options_Page {
 	}
 
 	public function get_what_site_button_form( $site_env_type, $what_site ) {
-        
-        if (is_null($what_site)) {
-            echo 'Choose one of them:';
-            $what_site = ['none'];
-        }
+
+		if ( is_null( $what_site ) ) {
+			echo 'Choose one of them:';
+			$what_site = [ 'none' ];
+		}
 
 		$what_site_key = array_search( 'checked', $what_site );
 
@@ -503,13 +505,16 @@ class Class_Options_Page {
 
 		$parts = new Class_Options_Parts();
 
+		$server_type_str_format = __( 'The %s server.', 'the-2nd-toolbar' );
+		$server_type_str = sprintf( $server_type_str_format, $site_env_type );
+
 		$form_output = sprintf(
 				$parts->get_radio_button_form_template(),
 				'the_2nd_toolbar-' . ( string ) $id_num,
 				$input_name,
 				$site_env_type . '-site',
 				$is_checked,
-				'The ' . $site_env_type . ' server.',
+				$server_type_str,
 		);
 
 		return $form_output;
